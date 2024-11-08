@@ -1,3 +1,4 @@
+import ReposGrid from '@/components/reposGrid'
 import Image from 'next/image'
 
 export default function Home() {
@@ -34,6 +35,18 @@ export default function Home() {
                 priority
               />
             </div>
+          </div>
+        </section>
+
+        <section className="p-5 mt-24 w-full" id="projects">
+          <div className="flex flex-col gap-6 justify-center w-full">
+            <div className="flex justify-center items-center w-full">
+              <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
+                <strong>Projetos em Destaque</strong>
+              </h3>
+            </div>
+
+            <ReposGrid />
           </div>
         </section>
       </main>
