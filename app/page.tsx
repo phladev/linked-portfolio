@@ -1,3 +1,4 @@
+import { ChevronsDown } from 'lucide-react'
 import ReposGrid from '@/components/reposGrid'
 import Image from 'next/image'
 
@@ -5,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <main className="p-5 mt-24 md:container w-full m-auto relative scroll-smooth">
-        <section className="w-full py-5" id="home">
+        <section className="w-full h-[75vh] py-5 space-y-56" id="home">
           {/* Info */}
           <div className="flex items-center justify-between text-white">
             <div className="flex flex-col justify-center">
@@ -35,6 +36,9 @@ export default function Home() {
                 priority
               />
             </div>
+          </div>
+          <div className="w-full flex justify-center text-purple-700 animate-bounce">
+            <ChevronsDown size={32} />
           </div>
         </section>
 
