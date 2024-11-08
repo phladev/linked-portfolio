@@ -34,7 +34,7 @@ const Header = () => {
                   <Link href="#projects">Projetos</Link>
                 </li>
                 <li className="text-lg md:text-lg hover:border-b border-b-slate-100 text-white hover:font-bold">
-                  <Link href="#contact">Habilidades</Link>
+                  <Link href="#abilities">Habilidades</Link>
                 </li>
                 <li className="text-lg md:text-lg hover:border-b border-b-slate-100 text-white hover:font-bold">
                   <Link href="#contact">Contato</Link>
@@ -53,7 +53,7 @@ const Header = () => {
             <Link href="#projects">Projetos</Link>
           </li>
           <li className="text-sm md:text-lg hover:border-b border-b-slate-100 text-white hover:font-bold">
-            <Link href="#contact">Habilidades</Link>
+            <Link href="#abilities">Habilidades</Link>
           </li>
           <li className="text-sm md:text-lg hover:border-b border-b-slate-100 text-white hover:font-bold">
             <Link href="#contact">Contato</Link>
