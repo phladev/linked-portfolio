@@ -1,6 +1,8 @@
 import { ChevronsDown } from 'lucide-react'
 import ReposGrid from '@/components/reposGrid'
 import Image from 'next/image'
+import Carousel from '@/components/carousel'
+import SkillTabs from '@/components/skillsTabs'
 
 export default function Home() {
   return (
@@ -51,6 +53,23 @@ export default function Home() {
             </div>
 
             <ReposGrid />
+          </div>
+        </section>
+
+        <section className="p-5 mt-24 w-full" id="abilities">
+          <div className="flex flex-col gap-6 justify-center w-full">
+            <div className="flex justify-center items-center w-full">
+              <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
+                <strong>Habilidades</strong>
+              </h3>
+            </div>
+
+            <div className="flex justify-center items-center w-full">
+              <SkillTabs />
+            </div>
+          </div>
+          <div className="mt-10">
+            <Carousel />
           </div>
         </section>
       </main>
