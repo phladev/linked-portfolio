@@ -5,6 +5,7 @@ import Carousel from '@/components/carousel'
 import SkillTabs from '@/components/skillsTabs'
 import Link from 'next/link'
 import ContactForm from '@/components/contactForm'
+import Footer from '@/components/footer'
 
 export default function Home() {
   return (
@@ -124,6 +125,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   )
 }
