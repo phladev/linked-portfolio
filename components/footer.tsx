@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-purple-700">
-              Quick Links
+              Links Rápidos
             </h3>
             <ul className="space-y-2">
               <li>
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-purple-700">
-              Get in Touch
+              Entre em Contato
             </h3>
             <p className="text-sm flex items-center gap-2">
               <Mail size={16} className="text-purple-700" />
