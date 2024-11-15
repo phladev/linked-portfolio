@@ -6,6 +6,7 @@ import SkillTabs from '@/components/skillsTabs'
 import Link from 'next/link'
 import ContactForm from '@/components/contactForm'
 import Footer from '@/components/footer'
+import BackToTop from '@/components/backToTop'
 
 export default function Home() {
   return (
@@ -125,6 +126,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <BackToTop />
       <Footer />
     </div>
   )
