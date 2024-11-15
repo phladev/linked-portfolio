@@ -47,7 +47,7 @@ const Header = () => {
       <nav className="hidden md:flex">
         <ul className="flex items-center gap-3">
           <li className="text-sm md:text-lg hover:border-b border-b-slate-100 text-white hover:font-bold">
-            <Link href="#home">Início</Link>
+            <Link href="#">Início</Link>
           </li>
           <li className="text-sm md:text-lg hover:border-b border-b-slate-100 text-white hover:font-bold">
             <Link href="#projects">Projetos</Link>
