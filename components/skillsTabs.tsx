@@ -8,14 +8,14 @@ const SkillTabs = () => {
       <TabsList className="flex justify-center items-center bg-gray-700">
         <TabsTrigger
           value="hard"
-          className="w-full data-[state=active]:bg-[#7e22ce] data-[state=active]:text-white text-gray-300 hover:text-white transition-colors"
+          className="w-full data-[state=active]:bg-purple-700 data-[state=active]:text-white text-gray-300 hover:text-white transition-colors"
         >
           <Code2 className="w-4 h-4 mr-2" />
           Hard Skills
         </TabsTrigger>
         <TabsTrigger
           value="soft"
-          className="w-full data-[state=active]:bg-[#7e22ce] data-[state=active]:text-white text-gray-300 hover:text-white transition-colors"
+          className="w-full data-[state=active]:bg-purple-700 data-[state=active]:text-white text-gray-300 hover:text-white transition-colors"
         >
           <Users className="w-4 h-4 mr-2" />
           Soft Skills
