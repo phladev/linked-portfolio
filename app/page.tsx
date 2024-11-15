@@ -1,8 +1,10 @@
-import { ChevronsDown } from 'lucide-react'
+import { ChevronsDown, FileDown, Github, Linkedin } from 'lucide-react'
 import ReposGrid from '@/components/reposGrid'
 import Image from 'next/image'
 import Carousel from '@/components/carousel'
 import SkillTabs from '@/components/skillsTabs'
+import Link from 'next/link'
+import ContactForm from '@/components/contactForm'
 
 export default function Home() {
   return (
@@ -70,6 +72,55 @@ export default function Home() {
           </div>
           <div className="mt-10">
             <Carousel />
+          </div>
+        </section>
+
+        <section className="p-5 mt-24 w-full" id="contact">
+          <div className="flex flex-col gap-6 justify-center w-full">
+            <div className="flex justify-center items-center w-full">
+              <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
+                <strong>Contato</strong>
+              </h3>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-12">
+              <ContactForm />
+
+              <div className="flex-1 flex flex-col justify-center items-center space-y-8 text-white">
+                <p className="text-xl text-center">
+                  Entre em contato por aqui também:
+                </p>
+                <div className="flex space-x-6">
+                  <Link
+                    href="https://github.com/phladev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-[#7e22ce] transition-colors"
+                  >
+                    <Github size={36} />
+                    <span className="sr-only">GitHub</span>
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/pedrohldev/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-[#7e22ce] transition-colors"
+                  >
+                    <Linkedin size={36} />
+                    <span className="sr-only">LinkedIn</span>
+                  </Link>
+                  <Link
+                    href="/CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-[#7e22ce] transition-colors"
+                  >
+                    <FileDown size={36} />
+                    <span className="sr-only">Download Currículo</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>

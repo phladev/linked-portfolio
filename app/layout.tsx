@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-[#171C28] antialiased`}>
+        <Toaster />
         <Header />
         {children}
       </body>
