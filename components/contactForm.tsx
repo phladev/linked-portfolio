@@ -66,7 +66,7 @@ const ContactForm = () => {
           type="text"
           placeholder="Seu Nome"
           {...register('name', { required: 'Nome é obrigatório' })}
-          className="bg-white/10 border-[#7e22ce] text-white placeholder-gray-400"
+          className="bg-white/10 border-purple-700 text-white placeholder-gray-400"
         />
         {errors.name && (
           <p className="text-sm text-red-500">{errors.name.message}</p>
@@ -84,7 +84,7 @@ const ContactForm = () => {
               message: 'Digite um email válido',
             },
           })}
-          className="bg-white/10 border-[#7e22ce] text-white placeholder-gray-400"
+          className="bg-white/10 border-purple-700 text-white placeholder-gray-400"
         />
         {errors.email && (
           <p className="text-sm text-red-500">{errors.email.message}</p>
@@ -95,7 +95,7 @@ const ContactForm = () => {
         <Textarea
           placeholder="Sua mensagem"
           {...register('message', { required: 'Mensagem é obrigatória' })}
-          className="bg-white/10 border-[#7e22ce] text-white placeholder-gray-400 min-h-[150px]"
+          className="bg-white/10 border-purple-700 text-white placeholder-gray-400 min-h-[150px]"
         />
         {errors.message && (
           <p className="text-sm text-red-500">{errors.message.message}</p>
@@ -104,7 +104,7 @@ const ContactForm = () => {
 
       <Button
         type="submit"
-        className="w-full bg-[#7e22ce] hover:bg-[#6b21a8] text-white disabled:bg-[#4d1c75]"
+        className="w-full bg-purple-700 hover:bg-[#6b21a8] text-white disabled:bg-[#4d1c75]"
         disabled={isLoading}
       >
         {isLoading ? <Loader2 className="animate-spin" /> : 'Enviar Email'}
