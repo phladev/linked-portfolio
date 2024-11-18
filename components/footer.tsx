@@ -65,7 +65,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/phladev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-purple-700 transition-colors"
@@ -74,7 +74,7 @@ const Footer = () => {
                 <span className="sr-only">GitHub</span>
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/pedrohldev/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-purple-700 transition-colors"
