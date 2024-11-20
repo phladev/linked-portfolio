@@ -1,3 +1,5 @@
+'use client'
+
 import { ChevronsDown, FileDown, Github, Linkedin } from 'lucide-react'
 import ReposGrid from '@/components/reposGrid'
 import Image from 'next/image'
@@ -7,6 +9,7 @@ import Link from 'next/link'
 import ContactForm from '@/components/contactForm'
 import Footer from '@/components/footer'
 import BackToTop from '@/components/backToTop'
+import { motion } from 'motion/react'
 
 export default function Home() {
   return (
@@ -15,7 +18,12 @@ export default function Home() {
         <section className="w-full h-[75vh] py-5 space-y-56" id="home">
           {/* Info */}
           <div className="flex items-center justify-between text-white">
-            <div className="flex flex-col justify-center">
+            <motion.div
+              initial={{ left: -200, opacity: 0 }}
+              animate={{ left: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex relative flex-col justify-center"
+            >
               <p className="font-light md:text-xl">Olá, me chamo</p>
               <h1 className="text-5xl md:text-6xl">
                 <strong>Pedro Henrique</strong>
@@ -31,9 +39,14 @@ export default function Home() {
                   fique à vontade para explorar meu trabalho!
                 </p>
               </div>
-            </div>
+            </motion.div>
             {/* Image only on bigger screens */}
-            <div className="hidden md:flex">
+            <motion.div
+              initial={{ right: -200, opacity: 0 }}
+              animate={{ right: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="hidden md:flex relative"
+            >
               <Image
                 src="/coding.svg"
                 alt="Imagem cartonizada de um homem programando"
@@ -41,14 +54,26 @@ export default function Home() {
                 height={550}
                 priority
               />
-            </div>
+            </motion.div>
           </div>
-          <div className="w-full flex justify-center text-purple-700 animate-bounce">
+          <motion.div
+            initial={{ bottom: -200, opacity: 0 }}
+            animate={{ bottom: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="w-full relative flex justify-center text-purple-700 animate-bounce"
+          >
             <ChevronsDown size={32} />
-          </div>
+          </motion.div>
         </section>
 
-        <section className="p-5 mt-24 w-full" id="projects">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="p-5 mt-24 w-full"
+          id="projects"
+        >
           <div className="flex flex-col gap-6 justify-center w-full">
             <div className="flex justify-center items-center w-full">
               <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
@@ -58,9 +83,16 @@ export default function Home() {
 
             <ReposGrid />
           </div>
-        </section>
+        </motion.section>
 
-        <section className="p-5 mt-24 w-full" id="abilities">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="p-5 mt-24 w-full"
+          id="abilities"
+        >
           <div className="flex flex-col gap-6 justify-center w-full">
             <div className="flex justify-center items-center w-full">
               <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
@@ -75,9 +107,16 @@ export default function Home() {
           <div className="mt-10">
             <Carousel />
           </div>
-        </section>
+        </motion.section>
 
-        <section className="p-5 mt-24 w-full" id="contact">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="p-5 mt-24 w-full"
+          id="contact"
+        >
           <div className="flex flex-col gap-6 justify-center w-full">
             <div className="flex justify-center items-center w-full">
               <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
@@ -124,7 +163,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
       <BackToTop />
       <Footer />
