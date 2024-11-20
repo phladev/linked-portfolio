@@ -50,4 +50,4 @@ O projeto estará disponível no navegador no endereço http://localhost:3000.
 **Deploy**
 ----------
 
-O deploy é realizado automaticamente na **Vercel**. Cada commit na branch principal dispara um novo build, garantindo que a aplicação esteja sempre atualizada.
+O deploy é realizado automaticamente na **Vercel**. Cada commit na branch principal dispara um novo build, garantindo que a aplicação esteja sempre atualizada. Link do projeto no ar: https://phladev.vercel.app/
