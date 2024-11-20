@@ -9,6 +9,7 @@ O **Linked Portfolio** é um portfólio pessoal feito com foco em performance, d
 -   **React.js e Next.js**: Para desenvolvimento de interfaces e renderização de páginas.
 -   **TailwindCSS**: Para estilização rápida e responsiva.
 -   **TypeScript**: Para maior segurança e escalabilidade no código.
+-   **React Hook Form**: Para gerenciamento de formulários de forma leve e eficiente.
 -   **Framer Motion**: Para criar animações interativas e fluidas.
 -   **Vercel**: Plataforma de deploy para hospedar a aplicação.
 
