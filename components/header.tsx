@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import {
   Sheet,
@@ -7,14 +9,20 @@ import {
   SheetTitle,
   SheetTrigger,
 } from './ui/sheet'
+import { motion } from 'motion/react'
 import { Menu } from 'lucide-react'
 
 const Header = () => {
   return (
     <header className="w-full flex items-center justify-between h-20 border-b px-5 border-b-slate-100">
-      <h3 className="font-bold text-sm md:text-lg text-white">
+      <motion.h3
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="font-bold text-sm md:text-lg text-white"
+      >
         &lt;phladev /&gt;
-      </h3>
+      </motion.h3>
       <Sheet>
         <SheetTrigger className="flex md:hidden">
           <Menu className="text-white" />
@@ -44,7 +52,12 @@ const Header = () => {
           </SheetHeader>
         </SheetContent>
       </Sheet>
-      <nav className="hidden md:flex">
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="hidden md:flex"
+      >
         <ul className="flex items-center gap-3">
           <li className="text-sm md:text-lg hover:border-b border-b-slate-100 text-white hover:font-bold">
             <Link href="#">Início</Link>
@@ -59,7 +72,7 @@ const Header = () => {
             <Link href="#contact">Contato</Link>
           </li>
         </ul>
-      </nav>
+      </motion.nav>
     </header>
   )
 }
