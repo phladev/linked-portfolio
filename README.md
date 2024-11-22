@@ -11,6 +11,7 @@ O **Linked Portfolio** é um portfólio pessoal feito com foco em performance, d
 -   **TypeScript**: Para maior segurança e escalabilidade no código.
 -   **React Hook Form**: Para gerenciamento de formulários de forma leve e eficiente.
 -   **Framer Motion**: Para criar animações interativas e fluidas.
+-   **EmailJs**: Para o envio de emails.
 -   **Vercel**: Plataforma de deploy para hospedar a aplicação.
 
 **Funcionalidades**
@@ -45,7 +46,7 @@ Certifique-se de ter o Node.js e npm instalados em sua máquina:
 ``` bash
   npm run dev
 ```
-O projeto estará disponível no navegador no endereço http://localhost:3000.
+O projeto estará disponível no navegador no endereço http://localhost:3000. É preciso também configurar as variáveis de ambiente para o uso do EmailJs.
 
 **Deploy**
 ----------
