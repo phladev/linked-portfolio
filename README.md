@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**Linked Portfolio**
+====================
 
-## Getting Started
+O **Linked Portfolio** é um portfólio pessoal feito com foco em performance, design elegante e responsividade. Ele utiliza tecnologias modernas para criar animações suaves e um layout acessível e adaptável.
 
-First, run the development server:
+**Tecnologias Utilizadas**
+--------------------------
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+-   **React.js e Next.js**: Para desenvolvimento de interfaces e renderização de páginas.
+-   **TailwindCSS**: Para estilização rápida e responsiva.
+-   **TypeScript**: Para maior segurança e escalabilidade no código.
+-   **React Hook Form**: Para gerenciamento de formulários de forma leve e eficiente.
+-   **Framer Motion**: Para criar animações interativas e fluidas.
+-   **EmailJs**: Para o envio de emails.
+-   **Vercel**: Plataforma de deploy para hospedar a aplicação.
+
+**Funcionalidades**
+-------------------
+
+1.  **Design Personalizável**: Layout limpo e responsivo com possibilidade de personalização.
+2.  **Animações Suaves**: Utiliza Framer Motion para animações que enriquecem a experiência do usuário.
+3.  **Performance Otimizada**: Implementado com Next.js para renderização eficiente e carregamento rápido.
+4.  **SEO-Friendly**: Utiliza as capacidades de otimização do Next.js para melhorar o SEO.
+
+* * * * *
+
+**Como Configurar o Projeto**
+-----------------------------
+
+### **1\. Clonar o Repositório**
+``` bash
+  git clone https://github.com/phladev/linked-portfolio.git
+```
+### **2\. Acessar o Diretório**
+``` bash
+  cd linked-portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **3\. Instalar Dependências**
+Certifique-se de ter o Node.js e npm instalados em sua máquina:
+``` bash
+  npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **4\. Rodar o Projeto em Ambiente de Desenvolvimento**
+``` bash
+  npm run dev
+```
+O projeto estará disponível no navegador no endereço http://localhost:3000. É preciso também configurar as variáveis de ambiente para o uso do EmailJs.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Deploy**
+----------
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O deploy é realizado automaticamente na **Vercel**. Cada commit na branch principal dispara um novo build, garantindo que a aplicação esteja sempre atualizada. Link do projeto no ar: https://phladev.vercel.app/
