@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
 import { Toaster } from 'react-hot-toast'
+import Script from 'next/script'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -45,6 +46,18 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-[#171C28] antialiased`}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-50BQQC2QER"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-50BQQC2QER');
+          `}
+        </Script>
         <Toaster />
         <Header />
         {children}
