@@ -1,171 +1,254 @@
 'use client'
 
-import { ChevronsDown, FileDown, Github, Linkedin } from 'lucide-react'
-import ReposGrid from '@/components/reposGrid'
-import Image from 'next/image'
-import Carousel from '@/components/carousel'
-import SkillTabs from '@/components/skillsTabs'
 import Link from 'next/link'
+import { motion } from 'motion/react'
+import Projects from '@/components/projects'
+import HowIWork from '@/components/howIWork'
 import ContactForm from '@/components/contactForm'
 import Footer from '@/components/footer'
-import BackToTop from '@/components/backToTop'
-import { motion } from 'motion/react'
+
+const STACK = [
+  'React',
+  'Next.js',
+  'Node.js',
+  'TypeScript',
+  'Tailwind CSS',
+  'PostgreSQL',
+  'Supabase',
+  'MongoDB',
+  'MySQL',
+  'Git/GitHub',
+  'PHP',
+]
+
+const heroReveal = (delay = 0) => ({
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay },
+})
+
+const sectionReveal = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+}
 
 export default function Home() {
   return (
-    <div>
-      <main className="p-5 mt-24 md:container w-full m-auto relative scroll-smooth">
-        <section className="w-full h-[75vh] py-5 space-y-56" id="home">
-          {/* Info */}
-          <div className="flex items-center justify-between text-white">
-            <motion.div
-              initial={{ left: -200, opacity: 0 }}
-              animate={{ left: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex relative flex-col justify-center"
-            >
-              <p className="font-light md:text-xl">Olá, me chamo</p>
-              <h1 className="text-5xl md:text-6xl">
-                <strong>Pedro Henrique</strong>
-              </h1>
-              <p className="text-lg md:text-2xl text-purple-700">
-                <cite>Desenvolvedor Fullstack</cite>
-              </p>
+    <div className="min-h-screen overflow-x-hidden bg-canvas">
+      <section
+        id="inicio"
+        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-36 text-center"
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle_at_1px_1px,rgba(160,163,173,0.3)_1px,transparent_0)] [background-size:34px_34px] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_68%)] [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_68%)]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full [background:radial-gradient(circle,rgba(55,138,221,0.2),transparent_70%)]"
+        />
 
-              <div className="mt-4 flex items-center gap-4 text-start">
-                <p className="text-sm md:text-lg md:w-[75%]">
-                  Se você precisa de uma solução tecnológica eficiente, com as
-                  melhores práticas está no lugar certo!. Seja bem-vindo(a) e
-                  fique à vontade para explorar meu trabalho!
-                </p>
-              </div>
-            </motion.div>
-            {/* Image only on bigger screens */}
-            <motion.div
-              initial={{ right: -200, opacity: 0 }}
-              animate={{ right: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="hidden md:flex relative"
-            >
-              <Image
-                src="/coding.svg"
-                alt="Imagem cartonizada de um homem programando"
-                width={550}
-                height={550}
-                priority
-              />
-            </motion.div>
-          </div>
-          <motion.div
-            initial={{ bottom: -200, opacity: 0 }}
-            animate={{ bottom: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="w-full relative flex justify-center text-purple-700 animate-bounce"
+        <div className="relative z-[1] flex max-w-[760px] flex-col items-center gap-5">
+          <motion.span
+            {...heroReveal()}
+            className="font-mono text-[clamp(22px,3vw,28px)] tracking-wide text-accent-purple"
           >
-            <ChevronsDown size={32} />
+            &lt;phladev /&gt;
+          </motion.span>
+
+          <motion.h1
+            {...heroReveal(0.05)}
+            className="font-display text-[clamp(40px,6vw,64px)] font-medium leading-[1.05] text-ink"
+          >
+            Pedro Henrique
+          </motion.h1>
+
+          <motion.p
+            {...heroReveal(0.1)}
+            className="text-[clamp(18px,2.4vw,22px)] text-muted2"
+          >
+            Desenvolvedor Fullstack
+          </motion.p>
+
+          <motion.p
+            {...heroReveal(0.15)}
+            className="mt-3 max-w-[600px] bg-gradient-to-br from-accent-blue to-accent-purple bg-clip-text font-display text-[clamp(20px,2.6vw,26px)] font-medium text-transparent"
+          >
+            Desenvolvimento web sob medida, do conceito ao deploy.
+          </motion.p>
+
+          <motion.p
+            {...heroReveal(0.2)}
+            className="max-w-[560px] text-base leading-relaxed text-muted2"
+          >
+            Sites, sistemas e produtos digitais para negócios que querem
+            presença online de verdade — e para quem busca um profissional
+            completo pro time.
+          </motion.p>
+
+          <motion.div
+            {...heroReveal(0.25)}
+            className="mt-3 flex flex-wrap justify-center gap-4"
+          >
+            <Link
+              href="#contato"
+              className="rounded-lg bg-gradient-to-br from-accent-blue to-accent-purple px-7 py-3.5 text-base font-medium text-canvas transition-[filter] hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-ink"
+            >
+              Vamos conversar sobre seu projeto
+            </Link>
+            <Link
+              href="/CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-white/[0.16] px-6 py-3.5 text-base font-medium text-ink transition-colors hover:border-accent-purple hover:text-accent-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent-purple"
+            >
+              Ver currículo →
+            </Link>
           </motion.div>
-        </section>
+        </div>
+      </section>
 
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="p-5 mt-24 w-full"
-          id="projects"
+      <section id="projetos" className="mx-auto max-w-6xl px-6 py-28 sm:px-8">
+        <motion.div {...sectionReveal} className="mb-3 flex items-center gap-3">
+          <span className="font-mono text-xl text-accent-blue">&lt;/&gt;</span>
+          <h2 className="font-display text-[clamp(28px,4vw,38px)] font-medium text-ink">
+            Projetos em construção
+          </h2>
+        </motion.div>
+        <motion.p
+          {...sectionReveal}
+          className="mb-12 max-w-xl text-base text-muted2"
         >
-          <div className="flex flex-col gap-6 justify-center w-full">
-            <div className="flex justify-center items-center w-full">
-              <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
-                <strong>Projetos em Destaque</strong>
-              </h3>
+          Estou desenvolvendo três projetos autorais pra colocar aqui em breve,
+          com case study completo assim que estiverem prontos.
+        </motion.p>
+
+        <Projects />
+      </section>
+
+      <section
+        id="como-trabalho"
+        className="border-y border-white/[0.06] bg-surface px-6 py-24 sm:px-8"
+      >
+        <div className="mx-auto max-w-3xl">
+          <motion.div
+            {...sectionReveal}
+            className="mb-12 flex items-center gap-3"
+          >
+            <span className="font-mono text-xl text-accent-blue">
+              &lt;/&gt;
+            </span>
+            <h2 className="font-display text-[clamp(28px,4vw,38px)] font-medium text-ink">
+              Como trabalho
+            </h2>
+          </motion.div>
+
+          <HowIWork />
+        </div>
+      </section>
+
+      <section id="sobre" className="mx-auto max-w-6xl px-6 py-28 sm:px-8">
+        <motion.div {...sectionReveal} className="mb-8 flex items-center gap-3">
+          <span className="font-mono text-xl text-accent-blue">&lt;/&gt;</span>
+          <h2 className="font-display text-[clamp(28px,4vw,38px)] font-medium text-ink">
+            Sobre
+          </h2>
+        </motion.div>
+
+        <div className="flex flex-wrap items-start gap-14">
+          <motion.p
+            {...sectionReveal}
+            className="min-w-[280px] flex-[2_1_380px] text-base leading-loose text-muted2"
+          >
+            Sou desenvolvedor fullstack, atualmente diretor em uma empresa
+            júnior da minha faculdade em São João del Rei (MG), onde lidero
+            projetos e pessoas além de programar. Já atuei como freelancer e
+            estagiário, e hoje estou construindo minha atuação independente,
+            ajudando pequenos negócios a terem presença digital sólida — sites
+            rápidos, sistemas sob medida e integrações que realmente funcionam
+            no dia a dia.
+          </motion.p>
+
+          <motion.div
+            {...sectionReveal}
+            className="flex flex-[1_1_260px] flex-col gap-4"
+          >
+            <span className="font-mono text-xs uppercase tracking-wider text-muted2">
+              Stack técnica
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {STACK.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-md border border-white/[0.08] bg-surface px-2.5 py-1.5 font-mono text-xs text-muted2"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
 
-            <ReposGrid />
-          </div>
-        </motion.section>
-
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="p-5 mt-24 w-full"
-          id="abilities"
-        >
-          <div className="flex flex-col gap-6 justify-center w-full">
-            <div className="flex justify-center items-center w-full">
-              <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
-                <strong>Habilidades</strong>
-              </h3>
+      <section
+        id="contato"
+        className="border-t border-white/[0.06] bg-surface px-6 py-28 sm:px-8"
+      >
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-14 sm:grid-cols-2">
+          <motion.div {...sectionReveal} className="flex flex-col gap-6">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xl text-accent-blue">
+                &lt;/&gt;
+              </span>
+              <h2 className="font-display text-[clamp(26px,3.6vw,34px)] font-medium text-ink">
+                Vamos conversar sobre o seu projeto.
+              </h2>
             </div>
-
-            <div className="flex justify-center items-center w-full">
-              <SkillTabs />
+            <a
+              href="mailto:phladev05@gmail.com"
+              className="w-fit bg-gradient-to-br from-accent-blue to-accent-purple bg-clip-text font-display text-xl font-medium text-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent-purple"
+            >
+              phladev05@gmail.com
+            </a>
+            <div className="flex flex-wrap gap-5">
+              <Link
+                href="https://github.com/phladev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-b border-white/[0.16] text-[15px] text-ink transition-colors hover:border-accent-purple hover:text-accent-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent-purple"
+              >
+                GitHub
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/pedrohldev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-b border-white/[0.16] text-[15px] text-ink transition-colors hover:border-accent-purple hover:text-accent-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent-purple"
+              >
+                LinkedIn
+              </Link>
+              <Link
+                href="/CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-b border-white/[0.16] text-[15px] text-ink transition-colors hover:border-accent-purple hover:text-accent-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent-purple"
+              >
+                Baixar currículo
+              </Link>
             </div>
-          </div>
-          <div className="mt-10">
-            <Carousel />
-          </div>
-        </motion.section>
+          </motion.div>
 
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="p-5 mt-24 w-full"
-          id="contact"
-        >
-          <div className="flex flex-col gap-6 justify-center w-full">
-            <div className="flex justify-center items-center w-full">
-              <h3 className="text-xl md:text-2xl border-b-2 border-purple-700 text-white">
-                <strong>Contato</strong>
-              </h3>
-            </div>
+          <motion.div
+            {...sectionReveal}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <ContactForm />
+          </motion.div>
+        </div>
+      </section>
 
-            <div className="flex flex-col md:flex-row gap-12">
-              <ContactForm />
-
-              <div className="flex-1 flex flex-col justify-center items-center space-y-8 text-white">
-                <p className="text-xl text-center">
-                  Entre em contato por aqui também:
-                </p>
-                <div className="flex space-x-6">
-                  <Link
-                    href="https://github.com/phladev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-[#7e22ce] transition-colors"
-                  >
-                    <Github size={36} />
-                    <span className="sr-only">GitHub</span>
-                  </Link>
-                  <Link
-                    href="https://www.linkedin.com/in/pedrohldev/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-[#7e22ce] transition-colors"
-                  >
-                    <Linkedin size={36} />
-                    <span className="sr-only">LinkedIn</span>
-                  </Link>
-                  <Link
-                    href="/CV.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-[#7e22ce] transition-colors"
-                  >
-                    <FileDown size={36} />
-                    <span className="sr-only">Download Currículo</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.section>
-      </main>
-      <BackToTop />
       <Footer />
     </div>
   )

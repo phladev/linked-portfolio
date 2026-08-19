@@ -9,7 +9,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        display: ['var(--font-space-grotesk)', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'monospace'],
+      },
       colors: {
+        canvas: '#0F1115',
+        surface: '#1A1D24',
+        ink: '#F5F5F7',
+        muted2: '#A0A3AD',
+        'accent-blue': '#378ADD',
+        'accent-purple': '#7F77DD',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
