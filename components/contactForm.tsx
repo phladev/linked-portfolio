@@ -45,7 +45,7 @@ const ContactForm = () => {
 
   if (status === 'sent') {
     return (
-      <div className="flex flex-col items-start gap-2 rounded-xl border border-white/[0.08] bg-canvas p-7">
+      <div className="flex flex-col items-start gap-2 rounded-xl border border-white/[0.08] bg-canvas p-5 sm:p-7">
         <span className="font-display text-lg font-medium text-ink">
           Mensagem enviada.
         </span>
@@ -59,7 +59,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={onSubmit}
-      className="flex flex-col gap-4 rounded-xl border border-white/[0.08] bg-canvas p-7"
+      className="flex flex-col gap-4 rounded-xl border border-white/[0.08] bg-canvas p-5 sm:p-7"
     >
       <label className="flex flex-col gap-1.5 text-[13px] text-muted2">
         Nome

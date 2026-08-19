@@ -39,7 +39,7 @@ export default function Home() {
     <div className="min-h-screen overflow-x-hidden bg-canvas">
       <section
         id="inicio"
-        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-36 text-center"
+        className="relative flex flex-col items-center justify-center overflow-hidden px-6 pb-16 pt-28 text-center sm:min-h-screen sm:pb-24 sm:pt-36"
       >
         <div
           aria-hidden
@@ -90,7 +90,7 @@ export default function Home() {
 
           <motion.div
             {...heroReveal(0.25)}
-            className="mt-3 flex flex-wrap justify-center gap-4"
+            className="mt-3 flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row sm:flex-wrap"
           >
             <Link
               href="#contato"
@@ -110,7 +110,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projetos" className="mx-auto max-w-6xl px-6 py-28 sm:px-8">
+      <section
+        id="projetos"
+        className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-28"
+      >
         <motion.div {...sectionReveal} className="mb-3 flex items-center gap-3">
           <span className="font-mono text-xl text-accent-blue">&lt;/&gt;</span>
           <h2 className="font-display text-[clamp(28px,4vw,38px)] font-medium text-ink">
@@ -130,12 +133,12 @@ export default function Home() {
 
       <section
         id="como-trabalho"
-        className="border-y border-white/[0.06] bg-surface px-6 py-24 sm:px-8"
+        className="border-y border-white/[0.06] bg-surface px-6 py-14 sm:px-8 sm:py-24"
       >
         <div className="mx-auto max-w-3xl">
           <motion.div
             {...sectionReveal}
-            className="mb-12 flex items-center gap-3"
+            className="mb-8 flex items-center gap-3 sm:mb-12"
           >
             <span className="font-mono text-xl text-accent-blue">
               &lt;/&gt;
@@ -149,7 +152,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="sobre" className="mx-auto max-w-6xl px-6 py-28 sm:px-8">
+      <section
+        id="sobre"
+        className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-28"
+      >
         <motion.div {...sectionReveal} className="mb-8 flex items-center gap-3">
           <span className="font-mono text-xl text-accent-blue">&lt;/&gt;</span>
           <h2 className="font-display text-[clamp(28px,4vw,38px)] font-medium text-ink">
@@ -157,7 +163,7 @@ export default function Home() {
           </h2>
         </motion.div>
 
-        <div className="flex flex-wrap items-start gap-14">
+        <div className="flex flex-wrap items-start gap-10 sm:gap-14">
           <motion.p
             {...sectionReveal}
             className="min-w-[280px] flex-[2_1_380px] text-base leading-loose text-muted2"
@@ -194,9 +200,9 @@ export default function Home() {
 
       <section
         id="contato"
-        className="border-t border-white/[0.06] bg-surface px-6 py-28 sm:px-8"
+        className="border-t border-white/[0.06] bg-surface px-6 py-16 sm:px-8 sm:py-28"
       >
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-14 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-14">
           <motion.div {...sectionReveal} className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <span className="font-mono text-xl text-accent-blue">

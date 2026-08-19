@@ -55,14 +55,14 @@ const revealProps = (delay = 0) => ({
 const Projects = () => {
   return (
     <>
-      <div className="mb-22 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mb-16 grid grid-cols-1 gap-6 sm:mb-20 sm:grid-cols-2 lg:grid-cols-3">
         {IN_PROGRESS.map((project, i) => (
           <motion.div
             key={project.title}
             {...revealProps(i * 0.05)}
-            className="flex flex-col gap-4 rounded-xl border border-white/[0.06] bg-surface p-7 transition-colors hover:border-accent-purple/40"
+            className="flex flex-col gap-4 rounded-xl border border-white/[0.06] bg-surface p-5 transition-colors hover:border-accent-purple/40 sm:p-7"
           >
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between">
               <h3 className="font-display text-xl font-medium text-ink">
                 {project.title}
               </h3>
