@@ -6,11 +6,15 @@ import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
 import emailjs from '@emailjs/browser'
 import toast from 'react-hot-toast'
+import { motion } from 'motion/react'
+import { Loader2 } from 'lucide-react'
 
 type Status = 'idle' | 'sending' | 'sent'
 
 const fieldClassName =
   'bg-surface border-white/[0.12] text-ink placeholder:text-muted2 focus-visible:ring-accent-purple'
+
+const MotionButton = motion.create(Button)
 
 const ContactForm = () => {
   const [formName, setFormName] = useState('')
@@ -87,13 +91,17 @@ const ContactForm = () => {
           className={fieldClassName}
         />
       </label>
-      <Button
+      <MotionButton
         type="submit"
         disabled={status === 'sending'}
-        className="mt-1 bg-gradient-to-br from-accent-blue to-accent-purple text-canvas hover:brightness-110 disabled:opacity-60"
+        whileHover={status === 'sending' ? undefined : { scale: 1.02 }}
+        whileTap={status === 'sending' ? undefined : { scale: 0.97 }}
+        transition={{ duration: 0.15, ease: 'easeOut' }}
+        className="mt-1 flex items-center justify-center gap-2 bg-gradient-to-br from-accent-blue to-accent-purple text-canvas hover:brightness-110 disabled:opacity-60"
       >
+        {status === 'sending' && <Loader2 className="h-4 w-4 animate-spin" />}
         {status === 'sending' ? 'Enviando...' : 'Enviar mensagem'}
-      </Button>
+      </MotionButton>
     </form>
   )
 }
