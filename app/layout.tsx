@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import {
+  Inter,
+  Space_Grotesk as SpaceGrotesk,
+  JetBrains_Mono as JetBrainsMono,
+} from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
 import { Toaster } from 'react-hot-toast'
@@ -7,6 +11,22 @@ import Script from 'next/script'
 
 const inter = Inter({
   subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const spaceGrotesk = SpaceGrotesk({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
+const jetBrainsMono = JetBrainsMono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono',
   display: 'swap',
 })
 
@@ -22,7 +42,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html
+      lang="en"
+      className={`scroll-smooth ${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
+    >
       <head>
         <link
           rel="icon"
@@ -45,7 +68,7 @@ export default function RootLayout({
           itemProp="image"
         />
       </head>
-      <body className={`${inter.className} bg-[#171C28] antialiased`}>
+      <body className={`${inter.className} bg-canvas antialiased`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-50BQQC2QER"
           strategy="afterInteractive"
