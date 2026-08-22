@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { auth, signOut } from '@/lib/auth'
 
 export default async function AdminHomePage() {
@@ -33,10 +34,17 @@ export default async function AdminHomePage() {
         </p>
       </div>
 
-      <div className="rounded-xl border border-white/[0.06] bg-surface p-6 text-sm text-muted2">
-        Fase 0 concluída: autenticação e banco de dados estão no ar. As próximas
-        fases adicionam aqui o CRUD de projetos, mensagens e conteúdo do site.
-      </div>
+      <Link
+        href="/admin/projects"
+        className="flex flex-col gap-1.5 rounded-xl border border-white/[0.06] bg-surface p-6 transition-colors hover:border-accent-purple/40 sm:max-w-xs"
+      >
+        <span className="font-display text-lg font-medium text-ink">
+          Projetos
+        </span>
+        <span className="text-sm text-muted2">
+          Criar, editar, reordenar e publicar os projetos do site.
+        </span>
+      </Link>
     </div>
   )
 }
