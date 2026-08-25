@@ -218,10 +218,10 @@ export default function HomeView({ projects }: HomeViewProps) {
               </h2>
             </div>
             <a
-              href="mailto:phladev05@gmail.com"
+              href="mailto:pedro@phladev.com.br"
               className="w-fit bg-gradient-to-br from-accent-blue to-accent-purple bg-clip-text font-display text-xl font-medium text-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent-purple"
             >
-              phladev05@gmail.com
+              pedro@phladev.com.br
             </a>
             <div className="flex flex-wrap gap-5">
               <Link
