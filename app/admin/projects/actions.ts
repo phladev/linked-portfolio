@@ -32,6 +32,7 @@ const projectSchema = z.object({
     .or(z.literal('').transform(() => undefined)),
   status: z.enum(['in_progress', 'completed', 'archived']),
   published: z.coerce.boolean(),
+  featured: z.coerce.boolean(),
 })
 
 const MAX_COVER_BYTES = 4 * 1024 * 1024
@@ -83,6 +84,7 @@ export async function createProject(formData: FormData) {
     deployUrl: formData.get('deployUrl'),
     status: formData.get('status'),
     published: formData.get('published') === 'on',
+    featured: formData.get('featured') === 'on',
   })
 
   const coverUrl = await uploadCoverIfPresent(formData)
@@ -128,6 +130,7 @@ export async function updateProject(id: string, formData: FormData) {
     deployUrl: formData.get('deployUrl'),
     status: formData.get('status'),
     published: formData.get('published') === 'on',
+    featured: formData.get('featured') === 'on',
   })
 
   const coverUrl = await uploadCoverIfPresent(formData)
@@ -190,6 +193,19 @@ export async function toggleProjectPublished(id: string, published: boolean) {
   await db
     .update(projects)
     .set({ published, updatedAt: new Date() })
+    .where(eq(projects.id, id))
+
+  revalidatePath('/admin/projects')
+  revalidatePath('/')
+}
+
+export async function toggleProjectFeatured(id: string, featured: boolean) {
+  await requireAdminSession()
+
+  const db = getDb()
+  await db
+    .update(projects)
+    .set({ featured, updatedAt: new Date() })
     .where(eq(projects.id, id))
 
   revalidatePath('/admin/projects')

@@ -26,6 +26,7 @@ export const projects = pgTable('projects', {
   deployUrl: text('deploy_url'),
   status: projectStatus('status').notNull().default('in_progress'),
   published: boolean('published').notNull().default(false),
+  featured: boolean('featured').notNull().default(false),
   position: integer('position').notNull().default(0),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()

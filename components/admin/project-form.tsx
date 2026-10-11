@@ -172,6 +172,22 @@ export function ProjectForm({ project, action }: ProjectFormProps) {
         Publicado no site
       </label>
 
+      <div className="flex flex-col gap-1">
+        <label className="flex items-center gap-2 text-sm text-muted2">
+          <input
+            type="checkbox"
+            name="featured"
+            defaultChecked={project?.featured ?? false}
+            className="h-4 w-4 rounded border-white/20 bg-transparent"
+          />
+          Projeto em destaque
+        </label>
+        <p className="pl-6 text-xs text-muted2/80">
+          Aparece na seção de destaques, com a capa em evidência. Use uma capa
+          horizontal (16:10).
+        </p>
+      </div>
+
       <div className="flex items-center gap-3 pt-2">
         <Button type="submit" disabled={isPending}>
           {isPending ? 'Salvando...' : 'Salvar'}

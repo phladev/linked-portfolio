@@ -24,6 +24,7 @@ import type { Project } from '@/lib/db/queries/projects'
 import {
   deleteProject,
   reorderProjects,
+  toggleProjectFeatured,
   toggleProjectPublished,
 } from '@/app/admin/projects/actions'
 
@@ -49,6 +50,16 @@ function SortableRow({ project }: { project: Project }) {
         await toggleProjectPublished(project.id, !project.published)
       } catch {
         toast.error('Não deu pra atualizar a publicação.')
+      }
+    })
+  }
+
+  function handleToggleFeatured() {
+    startTransition(async () => {
+      try {
+        await toggleProjectFeatured(project.id, !project.featured)
+      } catch {
+        toast.error('Não deu pra atualizar o destaque.')
       }
     })
   }
@@ -116,6 +127,20 @@ function SortableRow({ project }: { project: Project }) {
         }`}
       >
         {project.published ? 'Publicado' : 'Rascunho'}
+      </button>
+
+      <button
+        type="button"
+        onClick={handleToggleFeatured}
+        disabled={isPending}
+        aria-pressed={project.featured}
+        className={`whitespace-nowrap rounded-full px-2.5 py-1 font-mono text-[11px] transition-colors ${
+          project.featured
+            ? 'bg-accent-purple/15 text-accent-purple'
+            : 'bg-white/5 text-muted2'
+        }`}
+      >
+        {project.featured ? '★ Destaque' : '☆ Destaque'}
       </button>
 
       <Link href={`/admin/projects/${project.id}`}>

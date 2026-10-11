@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'motion/react'
+import FeaturedProjects from '@/components/featured-projects'
 import Projects from '@/components/projects'
 import HowIWork from '@/components/howIWork'
 import ContactForm from '@/components/contactForm'
@@ -40,6 +41,8 @@ type HomeViewProps = {
 }
 
 export default function HomeView({ projects }: HomeViewProps) {
+  const featuredProjects = projects.filter((project) => project.featured)
+  const otherProjects = projects.filter((project) => !project.featured)
   return (
     <div className="min-h-screen overflow-x-hidden bg-canvas">
       <section
@@ -115,6 +118,27 @@ export default function HomeView({ projects }: HomeViewProps) {
         </div>
       </section>
 
+      {featuredProjects.length > 0 && (
+        <section
+          id="destaques"
+          className="mx-auto max-w-6xl px-6 pt-16 sm:px-8 sm:pt-28"
+        >
+          <motion.div
+            {...sectionReveal}
+            className="mb-10 flex items-center gap-3"
+          >
+            <span className="font-mono text-xl text-accent-purple">
+              &lt;/&gt;
+            </span>
+            <h2 className="font-display text-[clamp(28px,4vw,38px)] font-medium text-ink">
+              Projetos em destaque
+            </h2>
+          </motion.div>
+
+          <FeaturedProjects projects={featuredProjects} />
+        </section>
+      )}
+
       <section
         id="projetos"
         className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-28"
@@ -133,7 +157,7 @@ export default function HomeView({ projects }: HomeViewProps) {
           com case study completo assim que estiverem prontos.
         </motion.p>
 
-        <Projects projects={projects} />
+        <Projects projects={otherProjects} />
       </section>
 
       <section
