@@ -1,0 +1,94 @@
+/*
+ * Painel de prospecção, direção "caderno de campo": papel quente, tinta escura,
+ * uma única cor de sinal (urucum) reservada ao que está vencido ou pede ação.
+ * Tudo escopado em .painel para não afetar o site público.
+ */
+.painel {
+  --pn-paper: 243 238 228;
+  --pn-card: 251 248 241;
+  --pn-sunk: 234 227 214;
+  --pn-ink: 29 26 22;
+  --pn-muted: 104 96 84;
+  --pn-line: 217 208 191;
+  --pn-signal: 179 52 28;
+  --pn-moss: 63 107 74;
+  --pn-gold: 128 88 8;
+
+  /* componentes antigos do admin (projetos) herdam a paleta clara */
+  --c-canvas: 243 238 228;
+  --c-surface: 251 248 241;
+  --c-ink: 29 26 22;
+  --c-muted2: 104 96 84;
+  --c-accent-blue: 29 26 22;
+  --c-accent-purple: 179 52 28;
+
+  /* tokens do shadcn dentro do painel (inputs e botões dos projetos) */
+  --input: 38 16% 70%;
+  --border: 38 18% 80%;
+  --ring: 30 12% 10%;
+  --muted-foreground: 36 8% 36%;
+
+  background-color: rgb(var(--pn-paper));
+  color: rgb(var(--pn-ink));
+  font-family: var(--font-pn-body), system-ui, sans-serif;
+  /* papel: grão sutil, sem imagem externa */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.painel :focus-visible {
+  outline: 2px solid rgb(var(--pn-ink));
+  outline-offset: 2px;
+}
+
+/* Entrada escalonada da fila: um momento bem orquestrado em vez de microanimações soltas */
+@keyframes pn-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pn-rise {
+  animation: pn-rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes pn-stamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) rotate(-6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-2deg);
+  }
+}
+
+.pn-stamp-in {
+  animation: pn-stamp 0.28s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pn-rise,
+  .pn-stamp-in {
+    animation: none;
+  }
+}
+
+/* Linha de caderno discreta, usada nos cabeçalhos de seção */
+.pn-rule {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(var(--pn-line)) 0 6px,
+    transparent 6px 10px
+  );
+  height: 1px;
+}
+
+.pn-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--pn-line)) transparent;
+}

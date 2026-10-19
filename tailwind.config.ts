@@ -13,14 +13,31 @@ const config: Config = {
         sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
         display: ['var(--font-space-grotesk)', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'monospace'],
+        'pn-display': ['var(--font-pn-display)', 'Georgia', 'serif'],
+        'pn-body': ['var(--font-pn-body)', 'system-ui', 'sans-serif'],
+        'pn-mono': ['var(--font-pn-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
-        canvas: '#0F1115',
-        surface: '#1A1D24',
-        ink: '#F5F5F7',
-        muted2: '#A0A3AD',
-        'accent-blue': '#378ADD',
-        'accent-purple': '#7F77DD',
+        // Tokens do site público; dentro de .painel as variáveis --c-* os redefinem
+        // (paleta clara do painel), então componentes antigos do admin se adaptam sozinhos.
+        canvas: 'rgb(var(--c-canvas, 15 17 21) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface, 26 29 36) / <alpha-value>)',
+        ink: 'rgb(var(--c-ink, 245 245 247) / <alpha-value>)',
+        muted2: 'rgb(var(--c-muted2, 160 163 173) / <alpha-value>)',
+        'accent-blue': 'rgb(var(--c-accent-blue, 55 138 221) / <alpha-value>)',
+        'accent-purple': 'rgb(var(--c-accent-purple, 127 119 221) / <alpha-value>)',
+        // Painel de prospecção ("caderno de campo")
+        pn: {
+          paper: 'rgb(var(--pn-paper) / <alpha-value>)',
+          card: 'rgb(var(--pn-card) / <alpha-value>)',
+          sunk: 'rgb(var(--pn-sunk) / <alpha-value>)',
+          ink: 'rgb(var(--pn-ink) / <alpha-value>)',
+          muted: 'rgb(var(--pn-muted) / <alpha-value>)',
+          line: 'rgb(var(--pn-line) / <alpha-value>)',
+          signal: 'rgb(var(--pn-signal) / <alpha-value>)',
+          moss: 'rgb(var(--pn-moss) / <alpha-value>)',
+          gold: 'rgb(var(--pn-gold) / <alpha-value>)',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

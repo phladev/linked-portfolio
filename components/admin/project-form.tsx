@@ -48,7 +48,7 @@ export function ProjectForm({ project, action }: ProjectFormProps) {
   return (
     <form
       action={handleSubmit}
-      className="flex max-w-xl flex-col gap-5 rounded-xl border border-white/[0.06] bg-surface p-6"
+      className="flex max-w-xl flex-col gap-5 rounded-xl border border-pn-line bg-surface p-6"
     >
       <div className="flex flex-col gap-1.5">
         <label htmlFor="title" className="text-sm text-muted2">
@@ -150,7 +150,7 @@ export function ProjectForm({ project, action }: ProjectFormProps) {
           onChange={handleFileChange}
         />
         {preview && (
-          <div className="relative mt-2 h-32 w-full overflow-hidden rounded-lg border border-white/[0.06]">
+          <div className="relative mt-2 h-32 w-full overflow-hidden rounded-lg border border-pn-line">
             <Image
               src={preview}
               alt="Pré-visualização da capa"
@@ -167,7 +167,7 @@ export function ProjectForm({ project, action }: ProjectFormProps) {
           type="checkbox"
           name="published"
           defaultChecked={project?.published ?? false}
-          className="h-4 w-4 rounded border-white/20 bg-transparent"
+          className="h-4 w-4 rounded border-pn-line bg-transparent"
         />
         Publicado no site
       </label>
@@ -178,7 +178,7 @@ export function ProjectForm({ project, action }: ProjectFormProps) {
             type="checkbox"
             name="featured"
             defaultChecked={project?.featured ?? false}
-            className="h-4 w-4 rounded border-white/20 bg-transparent"
+            className="h-4 w-4 rounded border-pn-line bg-transparent"
           />
           Projeto em destaque
         </label>

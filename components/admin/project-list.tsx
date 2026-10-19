@@ -26,7 +26,7 @@ import {
   reorderProjects,
   toggleProjectFeatured,
   toggleProjectPublished,
-} from '@/app/admin/projects/actions'
+} from '@/app/admin/(painel)/projects/actions'
 
 const STATUS_LABEL: Record<Project['status'], string> = {
   in_progress: 'Em desenvolvimento',
@@ -83,7 +83,7 @@ function SortableRow({ project }: { project: Project }) {
     <div
       ref={setNodeRef}
       style={style}
-      className="flex items-center gap-4 rounded-lg border border-white/[0.06] bg-surface p-4"
+      className="flex items-center gap-4 rounded-lg border border-pn-line bg-surface p-4"
     >
       <button
         type="button"
@@ -95,7 +95,7 @@ function SortableRow({ project }: { project: Project }) {
         ⠿
       </button>
 
-      <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-md bg-white/5">
+      <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-md bg-pn-sunk">
         {project.coverUrl && (
           <Image
             src={project.coverUrl}
@@ -122,8 +122,8 @@ function SortableRow({ project }: { project: Project }) {
         disabled={isPending}
         className={`whitespace-nowrap rounded-full px-2.5 py-1 font-mono text-[11px] transition-colors ${
           project.published
-            ? 'bg-[oklch(78%_0.14_150/0.12)] text-[oklch(78%_0.14_150)]'
-            : 'bg-white/5 text-muted2'
+            ? 'bg-pn-moss/10 text-pn-moss'
+            : 'bg-pn-sunk text-muted2'
         }`}
       >
         {project.published ? 'Publicado' : 'Rascunho'}
@@ -136,8 +136,8 @@ function SortableRow({ project }: { project: Project }) {
         aria-pressed={project.featured}
         className={`whitespace-nowrap rounded-full px-2.5 py-1 font-mono text-[11px] transition-colors ${
           project.featured
-            ? 'bg-accent-purple/15 text-accent-purple'
-            : 'bg-white/5 text-muted2'
+            ? 'bg-pn-signal/10 text-pn-signal'
+            : 'bg-pn-sunk text-muted2'
         }`}
       >
         {project.featured ? '★ Destaque' : '☆ Destaque'}
@@ -192,7 +192,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
 
   if (items.length === 0) {
     return (
-      <p className="rounded-xl border border-white/[0.06] bg-surface p-6 text-sm text-muted2">
+      <p className="rounded-xl border border-pn-line bg-surface p-6 text-sm text-muted2">
         Nenhum projeto ainda. Crie o primeiro.
       </p>
     )
@@ -200,6 +200,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
 
   return (
     <DndContext
+      id="projetos"
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
