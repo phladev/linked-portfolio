@@ -71,9 +71,25 @@
   animation: pn-stamp 0.28s ease-out both;
 }
 
+@keyframes pn-sheet {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pn-sheet[open] {
+  animation: pn-sheet 0.22s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pn-rise,
-  .pn-stamp-in {
+  .pn-stamp-in,
+  .pn-sheet[open] {
     animation: none;
   }
 }

@@ -20,6 +20,7 @@ import {
 import { daysSince, relativeDay, todayISO } from '@/lib/leads/dates'
 import { cn } from '@/lib/utils'
 import { Btn, Empty, buttonCls, inputCls } from './ui'
+import { LeadSheet } from './lead-sheet'
 import { OpenCapture } from './open-capture'
 import { Stamp, Tag } from './stamp'
 
@@ -28,7 +29,14 @@ export type TableLead = {
   name: string
   niche: NicheId
   city: string | null
+  contactName: string | null
   phone: string | null
+  instagram: string | null
+  website: string | null
+  email: string | null
+  siteQuality: string
+  valueEstimate: number | null
+  notes: string | null
   stage: StageId
   source: SourceId
   nextActionAt: string | null
@@ -51,6 +59,7 @@ export function LeadsTable({ leads }: { leads: TableLead[] }) {
   const [limit, setLimit] = useState(PAGE)
   const [sel, setSel] = useState<Set<string>>(new Set())
   const [pending, start] = useTransition()
+  const [openId, setOpenId] = useState<string | null>(null)
   const today = todayISO()
 
   const filtered = useMemo(() => {
@@ -84,6 +93,8 @@ export function LeadsTable({ leads }: { leads: TableLead[] }) {
   }, [leads, q, stage, niche, source, onlyDue, sort, today])
 
   const visible = filtered.slice(0, limit)
+  const openIndex = filtered.findIndex((l) => l.id === openId)
+  const openLead = openIndex >= 0 ? filtered[openIndex] : null
   const allSelected = visible.length > 0 && visible.every((l) => sel.has(l.id))
 
   function toggle(id: string) {
@@ -93,6 +104,11 @@ export function LeadsTable({ leads }: { leads: TableLead[] }) {
       else n.add(id)
       return n
     })
+  }
+
+  function step(dir: -1 | 1) {
+    const next = filtered[openIndex + dir]
+    if (next) setOpenId(next.id)
   }
 
   function bulkMove(to: StageId) {
@@ -289,8 +305,9 @@ export function LeadsTable({ leads }: { leads: TableLead[] }) {
               return (
                 <li
                   key={l.id}
+                  onClick={() => setOpenId(l.id)}
                   className={cn(
-                    'grid grid-cols-[28px_1fr] items-start gap-3 px-4 py-3 transition-colors hover:bg-pn-sunk/50 md:grid-cols-[36px_minmax(0,2.2fr)_1fr_1.1fr_1.4fr] md:items-center',
+                    'grid cursor-pointer grid-cols-[28px_1fr] items-start gap-3 px-4 py-3 transition-colors hover:bg-pn-sunk/50 md:grid-cols-[36px_minmax(0,2.2fr)_1fr_1.1fr_1.4fr] md:items-center',
                     sel.has(l.id) && 'bg-pn-sunk/70',
                   )}
                 >
@@ -299,15 +316,17 @@ export function LeadsTable({ leads }: { leads: TableLead[] }) {
                     aria-label={`Selecionar ${l.name}`}
                     checked={sel.has(l.id)}
                     onChange={() => toggle(l.id)}
+                    onClick={(e) => e.stopPropagation()}
                     className="mt-1 h-4 w-4 accent-[rgb(var(--pn-ink))] md:mt-0"
                   />
                   <div className="min-w-0">
-                    <Link
-                      href={`/admin/leads/${l.id}`}
-                      className="block truncate font-pn-display text-[18px] font-medium leading-tight underline-offset-4 hover:underline"
+                    <button
+                      type="button"
+                      aria-haspopup="dialog"
+                      className="block w-full truncate text-left font-pn-display text-[18px] font-medium leading-tight underline-offset-4 hover:underline"
                     >
                       {l.name}
-                    </Link>
+                    </button>
                     <p className="mt-0.5 truncate text-[12.5px] text-pn-muted">
                       {l.city ?? 'sem cidade'} · {SOURCE_LABEL[l.source]}
                       {idle !== null && ACTIVE_STAGES.includes(l.stage)
@@ -339,6 +358,13 @@ export function LeadsTable({ leads }: { leads: TableLead[] }) {
           </ul>
         </div>
       )}
+
+      <LeadSheet
+        lead={openLead}
+        position={{ index: openIndex, total: filtered.length }}
+        onClose={() => setOpenId(null)}
+        onStep={step}
+      />
 
       {filtered.length > limit && (
         <div className="mt-4 flex justify-center">
